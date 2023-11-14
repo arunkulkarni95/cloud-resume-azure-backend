@@ -1,6 +1,7 @@
 import azure.functions as func
 import logging
 import os
+import json
 from azure.data.tables import TableServiceClient
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
@@ -33,6 +34,16 @@ def update_visitor_count(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
         visitor_count = get_and_update_visitor_count()
-        return func.HttpResponse(f"Visitor count updated. Current count: {visitor_count}", status_code=200)
+        # Return valid JSON
+        return func.HttpResponse(
+            json.dumps({"visitorCount": visitor_count}),
+            mimetype="application/json",
+            status_code=200
+        )
     except Exception as e:
-        return func.HttpResponse(f"Error: {str(e)}", status_code=500)
+        # Return error in JSON format
+        return func.HttpResponse(
+            json.dumps({"error": str(e)}),
+            mimetype="application/json",
+            status_code=500
+        )
