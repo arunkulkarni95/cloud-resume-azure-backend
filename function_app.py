@@ -32,19 +32,12 @@ def get_and_update_visitor_count():
 def update_visitor_count(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
 
-    headers = {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "POST",
-        "Access-Control-Allow-Headers": "Content-Type"
-    }
-
     try:
         visitor_count = get_and_update_visitor_count()
         # Return valid JSON
         return func.HttpResponse(
             json.dumps({"visitorCount": visitor_count}),
             mimetype="application/json",
-            headers=headers,
             status_code=200
         )
     except Exception as e:
@@ -52,6 +45,5 @@ def update_visitor_count(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(
             json.dumps({"error": str(e)}),
             mimetype="application/json",
-            headers=headers,
             status_code=500
         )
