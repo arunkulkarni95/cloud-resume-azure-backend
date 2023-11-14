@@ -23,7 +23,7 @@ def get_and_update_visitor_count():
 
     # Update the count
     updated_count = current_count + 1
-    table_client.upsert_entity({"PartitionKey": "VisitorCounter", "RowKey": "Count", "count": updated_count})
+    table_client.upsert_entity({"PartitionKey": "visitorCounter", "RowKey": "0", "count": updated_count})
 
     return updated_count
 
