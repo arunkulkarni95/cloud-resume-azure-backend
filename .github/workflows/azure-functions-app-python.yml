@@ -44,8 +44,8 @@ jobs:
         scope: resourcegroup
         subscriptionId: ${{ env.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
-        template: path/to/your/arm_template.json
-        parameters: path/to/your/arm_template_parameters.json
+        template: IaC/template.json
+        parameters: IaC/parameters.json
 
     - name: Deploy to Azure Function App
       if: success()
