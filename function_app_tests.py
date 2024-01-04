@@ -3,9 +3,9 @@ from function_app import get_visitor_count, update_visitor_count
 
 def test_get_visitor_count():
     mock_table_client = Mock()
-    mock_table_client.get_entity.return_value = {'count': 5}
+    mock_table_client.get_entity.return_value = {'count': 6}
     count = get_visitor_count(mock_table_client)
-    assert count == 5
+    assert count == 7
 
 def test_update_visitor_count():
     mock_table_client = Mock()
