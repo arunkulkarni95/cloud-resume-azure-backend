@@ -25,23 +25,19 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Install dependencies
+    - name: Install Dependencies and Run Tests
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         python -m pip install --upgrade pip
         pip install -r requirements.txt --target=".python_packages/lib/site-packages"
         popd
-
-    - name: Run tests
-      run: |
-        pip install install -r requirements.txt
         pytest function_app_tests.py
 
     - name: Deploy ARM template
       if: success()
       uses: azure/arm-deploy@v1
       with:
-        scope: resourceGroup
+        scope: resourcegroup
         subscriptionId: ${{ env.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
         template: path/to/your/arm_template.json
