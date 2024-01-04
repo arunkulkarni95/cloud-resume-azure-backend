@@ -42,7 +42,7 @@ jobs:
         scope: resourcegroup
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: cloud-resume-challenge
-        template: ./template.json
+        template: template.json
 
     - name: Deploy to Azure Function App
       if: success()
