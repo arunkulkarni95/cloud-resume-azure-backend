@@ -35,20 +35,6 @@ jobs:
         pip install -r requirements.txt
         pytest function_app_tests.py
 
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-    - name: Deploy ARM template
-      if: success()
-      uses: azure/arm-deploy@v1
-      with:
-        scope: resourcegroup
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        resourceGroupName: cloud-resume-challenge
-        template: template.json
-
     - name: Deploy to Azure Function App
       if: success()
       uses: Azure/functions-action@v1
