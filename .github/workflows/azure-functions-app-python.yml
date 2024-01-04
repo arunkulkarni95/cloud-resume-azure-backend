@@ -25,12 +25,16 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Install Dependencies and Run Tests
+    - name: Install dependencies
       run: |
         pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
         python -m pip install --upgrade pip
         pip install -r requirements.txt --target=".python_packages/lib/site-packages"
         popd
+
+    - name: Run tests
+      run: |
+        pip install -r requirements.txt
         pytest function_app_tests.py
 
     - name: Deploy ARM template
