@@ -33,7 +33,9 @@ jobs:
         popd
 
     - name: Run tests
-      run: pytest
+      run: |
+        pip install pytest
+        pytest function_app_tests.py
 
     - name: Deploy ARM template
       if: success()
