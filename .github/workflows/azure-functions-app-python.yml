@@ -35,6 +35,11 @@ jobs:
         pip install -r requirements.txt
         pytest function_app_tests.py
 
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: Deploy ARM template
       if: success()
       uses: azure/arm-deploy@v1
