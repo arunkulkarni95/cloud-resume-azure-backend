@@ -34,7 +34,7 @@ jobs:
 
     - name: Run tests
       run: |
-        pip install pytest
+        pip install install -r requirements.txt
         pytest function_app_tests.py
 
     - name: Deploy ARM template
