@@ -9,7 +9,7 @@ env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: '.'           # Path to your function app project
   PYTHON_VERSION: '3.11'                        # Python version to use
   AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }} # Azure Subscription ID
-  AZURE_RESOURCE_GROUP: 'YourResourceGroupName' # Azure Resource Group name
+  AZURE_RESOURCE_GROUP: 'cloud-resume-challenge' # Azure Resource Group name
 
 jobs:
   build-and-deploy:
