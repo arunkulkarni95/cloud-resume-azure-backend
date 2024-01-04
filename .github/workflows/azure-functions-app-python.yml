@@ -43,7 +43,6 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: cloud-resume-challenge
         template: template.json
-        parameters: parameters.json
 
     - name: Deploy to Azure Function App
       if: success()
